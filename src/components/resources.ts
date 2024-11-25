@@ -1,13 +1,14 @@
-import {ResourceImage} from "./types.ts";
-
-enum ImageName {
-    hero = 'hero',
-}
+import {ImageNameEnum, ResourceImage} from "./types.ts";
 
 export class Resources {
     images: ResourceImage[] = [
         {
-            name: ImageName.hero,
+            name: ImageNameEnum.GROUND,
+            src: '/public/sprites/ground.png',
+            isLoaded: false,
+        },
+        {
+            name: ImageNameEnum.HERO,
             src: '/public/sprites/tank.png',
             isLoaded: false,
         },
@@ -25,10 +26,10 @@ export class Resources {
     }
 
     get hero(): HTMLImageElement | null {
-        return this.findImage(ImageName.hero)
+        return this.findImage(ImageNameEnum.HERO)
     }
 
-    findImage(name: ImageName): HTMLImageElement | null {
+    findImage(name: ImageNameEnum): HTMLImageElement | null {
         const image = this.images.find(i => i.name === name)
 
         if (image && image.image) return image.image

@@ -14,7 +14,7 @@ export class Game {
 
     constructor() {
         const resources = new Resources()
-        this.world = new World()
+        this.world = new World(resources, this)
         this.hero = new Hero({
             game: this,
             sprite: {
@@ -25,19 +25,20 @@ export class Game {
                 image: resources.hero as HTMLImageElement,
             },
             position: {
-                x: 0,
-                y: 0,
+                x: 32,
+                y: 32,
             },
             scale: 1
         })
         this.input = new Input()
     }
 
-    render(ctx: CanvasRenderingContext2D, deltaTime: number): void {
+    render(ctx: CanvasRenderingContext2D, deltaTime: number, timeStamp: number): void {
         this.hero.update(deltaTime)
 
         if (this.isDebug) this.world.drawGrid(ctx)
 
+        this.world.draw(ctx, timeStamp)
         this.hero.draw(ctx)
 
         if (this.eventTimer < this.eventInterval) {

@@ -1,5 +1,10 @@
 import {Game} from "../game.ts";
 
+export enum ImageNameEnum {
+    HERO = 'hero',
+    GROUND = 'ground'
+}
+
 export type T_Sprite = {
     x: number,
     y: number,
@@ -25,4 +30,15 @@ export type ResourceImage = {
     src: string,
     isLoaded: boolean,
     image?: HTMLImageElement,
+}
+
+export type T_LevelMap = {
+    col: number | number[],
+    row: number | number[],
+    sprite: ImageNameEnum,
+    animal: boolean,
+    spriteX: number,
+    spriteY: number,
+    animate: boolean,
+    maxFrame: number,
 }

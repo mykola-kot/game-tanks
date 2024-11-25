@@ -33,7 +33,7 @@ window.addEventListener('load', (): void => {
             ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT)
             const deltaTime = timeStamp - lastTime
             lastTime = timeStamp
-            game.render(ctx, deltaTime)
+            game.render(ctx, deltaTime, timeStamp)
         }
     }
 

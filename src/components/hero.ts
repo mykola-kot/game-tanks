@@ -5,14 +5,14 @@ import {TILE_SIZE} from "../main.ts";
 export class Hero extends GameObject {
     speed: number = 100
     maxFrame: number = 1
-    moving = false
+    moving: boolean = false
 
     update(deltaTime: number): void {
-        let nextX = this.destinationPosition.x
-        let nextY = this.destinationPosition.y
-        const scaledSpeed = this.speed * (deltaTime / 1000)
-        const distance = this.moveTowards(this.destinationPosition, scaledSpeed)
-        const arrived = distance <= scaledSpeed
+        let nextX: number = this.destinationPosition.x
+        let nextY: number = this.destinationPosition.y
+        const scaledSpeed: number = this.speed * (deltaTime / 1000)
+        const distance: number = this.moveTowards(this.destinationPosition, scaledSpeed)
+        const arrived: boolean = distance <= scaledSpeed
 
         if (arrived) {
             if (this.game.input.lastKey === UP) {
